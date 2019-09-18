@@ -5,9 +5,10 @@ const customerRouter = require('./routers/customer')
 const app = express()
 const morgan = require('morgan')
 const dotenv = require('dotenv');
-dotenv.config({path: '../.env'});
+const connection = require('./db/sqldb');
 
-require('./db/db')
+dotenv.config({path: '../.env'});
+console.log(process.env.JWT_KEY)
 app.listen(process.env.PORT, () => {
     console.log(`Server running on port ${process.env.PORT}`)
 })
