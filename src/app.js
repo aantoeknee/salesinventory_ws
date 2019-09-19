@@ -7,6 +7,7 @@ const morgan = require('morgan')
 const dotenv = require('dotenv');
 const connection = require('./db/sqldb');
 
+
 dotenv.config({path: '../.env'});
 console.log(process.env.JWT_KEY)
 app.listen(process.env.PORT, () => {
