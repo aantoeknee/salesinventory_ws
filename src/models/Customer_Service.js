@@ -11,7 +11,7 @@ require('../models/Customer')
     date: {
         type: Sequelize.DATE
     },
-    cose: {
+    cost: {
         type: Sequelize.DOUBLE
     }
   });

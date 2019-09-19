@@ -9,14 +9,17 @@ router.post('/addservice', auth2, async(req, res) => {
     console.log("POST /addservice")
     const { serviceName, serviceCost } = req.body
     console.log(req.body)
-    Service.addService({serviceName, serviceCost}).then(service => res.json({service, msg: 'Service Added'}))
+    Service.addService({serviceName, serviceCost})
+    .then(service => res.json({service, msg: 'Service Added'}))
+    .catch(err => res.status(500).send(err))
 
-    
 })
 
 router.get('/allservices', auth2, async(req, res) => {
     Service.getAllServices()
     .then(services => res.json(services))
+    .catch(err => res.status(500).send(err))
+
 })
 
 router.post('/deleteservice/:id', auth2, async(req, res) => {
