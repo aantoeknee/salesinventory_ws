@@ -2,6 +2,7 @@ const express = require('express')
 const userRouter = require('./routers/user')
 const productRouter = require('./routers/product')
 const customerRouter = require('./routers/customer')
+const serviceRouter = require('./routers/service')
 const app = express()
 const morgan = require('morgan')
 const dotenv = require('dotenv');
@@ -24,3 +25,4 @@ app.use(function(req, res, next) {
 app.use('/users',userRouter)
 app.use('/products', productRouter)
 app.use('/customers',  customerRouter)
+app.use('/services', serviceRouter)

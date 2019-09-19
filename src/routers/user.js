@@ -8,6 +8,10 @@ const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 dotenv.config({path: '../.env'});
 
+require('../models/Service')
+require('../models/Customer')
+require('../models/Customer_Service')
+
 
 router.post('/register', async(req, res) => {
   console.log(req.body.name)
@@ -24,8 +28,6 @@ router.post('/login', async(req, res) => {
       res.status(401).json({ message: 'No such user found' });
     }
     if (user.password === password) {
-      // from now on we'll identify the user by the id and the id is the 
-      // only personalized value that goes into our token
       let payload = { id: user.id };
       let token = jwt.sign(payload, process.env.JWT_KEY);
       res.json({ msg: 'ok', token: token });
