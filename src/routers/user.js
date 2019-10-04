@@ -15,15 +15,16 @@ require('../models/Customer_Service')
 
 router.post('/register', async(req, res) => {
   console.log(req.body.name)
-    const { name, password } = req.body
-    User.createUser({ name, password}).then(user => 
+    const { username, password } = req.body
+    User.createUser({ username, password}).then(user => 
         res.json({ user, msg: 'account created successfully'})
         )
 })
 router.post('/login', async(req, res) => {
-    const { name, password } = req.body;
-  if (name && password) {
-    let user = await User.getUser({ name: name });
+    const { username, password } = req.body
+
+  if (username && password) {
+    let user = await User.getUser({ username: username });
     if (!user) {
       res.status(401).json({ message: 'No such user found' });
     }

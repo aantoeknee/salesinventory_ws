@@ -8,6 +8,9 @@ const Service = sequelize.define('service', {
     },
     serviceCost: {
         type: Sequelize.STRING
+    },
+    imageUrl: {
+        type: Sequelize.STRING
     }
   },)
   
@@ -18,10 +21,11 @@ const Service = sequelize.define('service', {
   const getAllServices = async() => {
       return await Service.findAll()
   }
-  const addService = async({serviceName, serviceCost}) => {
+  const addService = async({serviceName, serviceCost, imageUrl}) => {
     return await Service.create({
         serviceName,
-        serviceCost
+        serviceCost,
+        imageUrl
     })
 }
 const deleteService = async(id) => {

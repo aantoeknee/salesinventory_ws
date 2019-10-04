@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const sequelize = require('../db/sqldb')
 
 const User = sequelize.define('user', {
-    name: {
+    username: {
       type: Sequelize.STRING,
     },
     password: {
@@ -15,9 +15,9 @@ const User = sequelize.define('user', {
     .catch(err => console.log('User table creation failed'))
 
  // create some helper functions to work on the database
-const createUser = async({name, password}) => {
+const createUser = async({username, password}) => {
     return await User.create({
-        name,
+        username,
         password
     })
 }
@@ -26,7 +26,8 @@ const getAllUser = async() => {
     return await User.findAll()
 }
 
-const getUser = async obj => {
+const getUser = async(obj) => {
+  console.log("ni agi dri")
     return await User.findOne({
         where: obj,
     })
